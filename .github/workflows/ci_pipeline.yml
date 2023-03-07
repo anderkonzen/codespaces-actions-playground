@@ -52,7 +52,13 @@ jobs:
         run: |
           echo "checkout backend"
 
-
+  backend_elastisearch_tests:
+    needs: [backend_lint, dialyzer]
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        run: |
+          echo "checkout backend"
 
   frontend_build:
     runs-on: ubuntu-latest
@@ -60,3 +66,19 @@ jobs:
       - name: checkout
         run: |
           echo "checkout frontend"
+
+  frontend_lint:
+    needs: frontend_build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        run: |
+          echo "checkout backend"
+
+  frontend_unit_tests:
+    needs: frontend_lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        run: |
+          echo "checkout backend"
