@@ -1,7 +1,13 @@
 # 
 name: CI Pipeline
 
+# Runs this workflow when:
+# * a pull request is opened or reopened or when the head branch of the pull
+#   request is updated
+# * there's a push or pull request to the "master" branch of the repository.
 on:
+  push:
+    branches: ["master"]
   pull_request:
     types: [opened, reopened, synchronize]
 
@@ -13,6 +19,24 @@ jobs:
       - name: checkout
         run: |
           echo "checkout backend"
+
+  backend_lint:
+    needs: backend_build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        run: |
+          echo "checkout backend"
+
+  backend_unit_tests:
+    needs: backend_lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        run: |
+          echo "checkout backend"
+
+
 
   frontend_build:
     runs-on: ubuntu-latest
