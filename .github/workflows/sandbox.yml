@@ -9,6 +9,8 @@ on:
 jobs:
 
   squad:
+    name: Check for labels
+    runs-on: ubuntu-latest
     steps:
       - run: |
           numOpenIssues="$(gh api graphql -F owner=$OWNER -F name=$REPO -f query='
