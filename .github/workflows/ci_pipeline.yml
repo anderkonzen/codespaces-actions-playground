@@ -7,7 +7,7 @@ name: CI Pipeline
 # * there's a push or pull request to the "master" branch of the repository.
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   pull_request:
     types: [opened, reopened, synchronize]
 
