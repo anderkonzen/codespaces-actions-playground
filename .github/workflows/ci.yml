@@ -1,0 +1,18 @@
+# Reusable workflow for CI pipeline that runs all the compilation, linter and
+# tests.
+name: CI Pipeline [Continuous]
+
+# Runs this workflow when:
+# * a pull request is opened or reopened or when the head branch of the pull
+#   request is updated
+# * there's a push or pull request to the "master" branch of the repository.
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  ci:
+    name: CI Pipeline
+    uses: ./.github/workflows/ci_pipeline.yml
