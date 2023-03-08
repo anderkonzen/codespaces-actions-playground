@@ -1,0 +1,30 @@
+name: CI/CD Sandbox
+
+run-name: Deploy by @${{ github.actor }}
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+
+  squad:
+    steps:
+      - run: |
+          numOpenIssues="$(gh api graphql -F owner=$OWNER -F name=$REPO -f query='
+            query($name: String!, $owner: String!) {
+              repository(owner: $owner, name: $name) {
+                issues(states:OPEN){
+                  totalCount
+                }
+              }
+            }
+          ' --jq '.data.repository.issues.totalCount')"
+
+          echo Number open issues: $numOpenIssues
+          echo 'NUM_OPEN_ISSUES='$numOpenIssues >> $GITHUB_ENV  
+  # ci:
+  #   name: CI
+  #   needs: squad
+  #   uses: ./.github/workflows/reusable_ci.yml
+

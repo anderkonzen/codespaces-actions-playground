@@ -1,6 +1,6 @@
 # Reusable workflow for CI pipeline that runs all the compilation, linter and
 # tests.
-name: CI Pipeline [Reusable Workflow]
+name: [Reusable Workflow] CI Pipeline
 
 on: workflow_call
 
