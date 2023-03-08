@@ -15,3 +15,7 @@ If you have forked this repository and would like to use this as a codespace tem
 5. Click "Open in a codespace"
 
 If you need to delete the codespace, you can do this at [https://github.com/codespaces](https://github.com/codespaces)
+
+# Actions for Project
+
+One for CI Pipeline
