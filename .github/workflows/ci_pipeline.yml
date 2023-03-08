@@ -1,5 +1,5 @@
 # Main workflow for CI pipeline that runs all the compilation, linter and
-# tests. This is a 
+# tests. This is a reusable workflow.
 name: CI Pipeline
 
 # Runs this workflow when:
@@ -76,6 +76,7 @@ jobs:
           echo "checkout frontend"
 
   frontend_lint:
+    name: Frontend / Lint
     needs: frontend_build
     runs-on: ubuntu-latest
     steps:
@@ -84,6 +85,7 @@ jobs:
           echo "checkout backend"
 
   frontend_unit_tests:
+    name: Frontend / Unit Tests
     needs: frontend_lint
     runs-on: ubuntu-latest
     steps:
