@@ -19,3 +19,5 @@ If you need to delete the codespace, you can do this at [https://github.com/code
 # Actions for Project
 
 One for CI Pipeline
+
+test main
