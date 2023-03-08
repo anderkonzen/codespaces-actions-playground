@@ -1,6 +1,6 @@
-# Reusable workflow for CI pipeline that runs all the compilation, linter and
-# tests.
-name: CI Pipeline [Continuous]
+# General CI workflow that exercises both backend and frontend, triggered
+# for commits on master branch and PRs.
+name: CI Pipeline
 
 # Runs this workflow when:
 # * a pull request is opened or reopened or when the head branch of the pull
@@ -14,5 +14,5 @@ on:
 
 jobs:
   ci:
-    name: CI Pipeline
-    uses: ./.github/workflows/ci_pipeline.yml
+    name: CI
+    uses: ./.github/workflows/reusable_ci.yml
