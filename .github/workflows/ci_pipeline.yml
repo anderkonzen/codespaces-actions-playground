@@ -1,4 +1,5 @@
-# 
+# Main workflow for CI pipeline that runs all the compilation, linter and
+# tests. This is a 
 name: CI Pipeline
 
 # Runs this workflow when:
@@ -14,6 +15,7 @@ on:
 jobs:
 
   backend_build:
+    name: Backend / Build
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -21,6 +23,7 @@ jobs:
           echo "checkout backend"
 
   backend_lint:
+    name: Backend / Lint
     needs: backend_build
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +32,7 @@ jobs:
           echo "checkout backend"
   
   dialyzer:
+    name: Backend / Dialyzer
     needs: backend_build
     runs-on: ubuntu-latest
     steps:
@@ -37,6 +41,7 @@ jobs:
           echo "checkout backend"
 
   backend_unit_tests:
+    name: Backend / Unit Tests
     needs: [backend_lint, dialyzer]
     runs-on: ubuntu-latest
     steps:
@@ -45,6 +50,7 @@ jobs:
           echo "checkout backend"
 
   backend_integration_tests:
+    name: Backend / Integration Tests
     needs: [backend_lint, dialyzer]
     runs-on: ubuntu-latest
     steps:
@@ -53,6 +59,7 @@ jobs:
           echo "checkout backend"
 
   backend_elastisearch_tests:
+    name: Backend / ES Tests
     needs: [backend_lint, dialyzer]
     runs-on: ubuntu-latest
     steps:
@@ -61,6 +68,7 @@ jobs:
           echo "checkout backend"
 
   frontend_build:
+    name: Frontend / Build
     runs-on: ubuntu-latest
     steps:
       - name: checkout
