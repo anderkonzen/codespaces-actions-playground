@@ -1,14 +1,14 @@
-# Reusable workflow for CI pipeline that runs all the compilation, linter and
-# tests.
-name: Release [Continuous]
+name: Release
 
-# Runs this workflow when:
-# * a pull request is opened or reopened or when the head branch of the pull
-#   request is updated
-# * there's a push or pull request to the "master" branch of the repository.
+run-name: Building image for ${{ inputs.hash }} by @${{ github.actor }}
+
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      hash:
+        description: 'SHA of the commit'
+        required: true
+        type: string
 
 jobs:
   ci:
