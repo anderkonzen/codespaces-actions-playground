@@ -1,6 +1,6 @@
 # General CI workflow that exercises both backend and frontend, triggered
 # for commits on master branch and PRs.
-name: CI Pipeline
+name: CI Pipeline [Continuous]
 
 # Runs this workflow when:
 # * a pull request is opened or reopened or when the head branch of the pull
