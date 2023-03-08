@@ -10,11 +10,16 @@ on:
         options:
         - production
         - staging
+      image:
+        description: 'Image name'
+        required: true
+        type: string
 
 jobs:
 
-  backend_build:
-    name: Backend / Build
+  ci_pipeline:
+    name: CI Pipeline
+    uses: ./.github/workflows/ci_pipeline.yml
     runs-on: ubuntu-latest
     steps:
       - name: checkout
