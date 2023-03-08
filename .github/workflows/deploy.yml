@@ -1,9 +1,11 @@
 name: Deploy
 
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}, image ${{ inputs.image }}
+
 on:
   workflow_dispatch:
     inputs:
-      target:
+      deploy_target:
         description: 'Target environment'
         required: true
         type: choice
